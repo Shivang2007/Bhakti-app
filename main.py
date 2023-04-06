@@ -44,17 +44,19 @@ try:
 except:
     toast('Error 101')
 try:
-    request_permissions([Permission.CALL_PHONE,Permission.SEND_SMS])
+    request_permissions([Permission.READ_EXTERNAL_STORAGE])
 except:
     toast('Error 102')
-    
-from home import MainPage, Page
+
+if not os.path.exists("/storage/emulated/0/Documents/Bhakti App"):
+    os.mkdir("/storage/emulated/0/Documents/Bhakti App")
+
+from home import MainPage
 
 MainPage()
-Page()
         
 class MainApp(MDApp):
-    nam = '$$&appname&$$'
+    nam = 'Bhakti'
     def build(self):
         self.theme_cls.theme_style_switch_animation = True
         self.theme_cls.primary_palette = "Blue"
@@ -65,8 +67,7 @@ class MainApp(MDApp):
         
         sm=ScreenManager()       
         sc_lst = [
-        MainPage(name='mainp'),
-        Page(name='p')
+        MainPage(name='mainp')
         ]
         for sc in sc_lst:
             sm.add_widget(sc)
