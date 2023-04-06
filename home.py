@@ -44,6 +44,3 @@ class MainPage(Screen):
     def goto(self, where):
         self.manager.current = where
         
-class Page(Screen):
-    def home(self):
-        self.manager.current = 'mainp'
